@@ -50,6 +50,7 @@ public class Courses {
     public String toString() {
         return "Courses{" +
                 "id=" + id +
+                "id=" + instructor +
                 ", title='" + title + '\'' +
                 '}';
     }
