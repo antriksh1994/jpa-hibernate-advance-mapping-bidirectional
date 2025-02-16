@@ -13,7 +13,7 @@ public class InstructorDetail {
     private String youtube_channel;
     @Column(name="hobby")
     private String hobby;
-    // for bidirectional mapping to get the instructor from instructor detail
+    // mappedBy for bidirectional mapping to get the instructor from instructor detail
     @OneToOne(mappedBy="instructorDetail", cascade=CascadeType.ALL)
     private Instructor instructor;
     // first we create a no arg constructor
