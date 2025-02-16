@@ -2,6 +2,9 @@ package com.antriksh.cruddemo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "instructor")
 public class Instructor {
@@ -19,6 +22,9 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+    @OneToMany(mappedBy = "instructor",cascade = {CascadeType.DETACH,CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH,})
+    private List<Courses> courses;
 
     public Instructor() {
     }
@@ -67,6 +73,21 @@ public class Instructor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+    public void setCourses(List<Courses> courses) {
+        this.courses = courses;
+    }
+
+    public List<Courses> getCourses() {
+        return courses;
+    }
+    // add a convenience method for bidirectional relationship
+    public void add(Courses tempCourse) {
+        if(courses == null) {
+            courses = new ArrayList<>();
+        }
+        courses.add(tempCourse);
+        tempCourse.setInstructor(this);
     }
 
     @Override

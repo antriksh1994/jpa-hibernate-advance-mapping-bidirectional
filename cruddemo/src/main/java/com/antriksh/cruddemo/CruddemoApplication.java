@@ -1,6 +1,7 @@
 package com.antriksh.cruddemo;
 
 import com.antriksh.cruddemo.dao.AppDAO;
+import com.antriksh.cruddemo.entity.Courses;
 import com.antriksh.cruddemo.entity.Instructor;
 import com.antriksh.cruddemo.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -19,13 +20,40 @@ public class CruddemoApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 
 		return runner -> {
-			createInstructor(appDAO);
+//			createInstructor(appDAO);
 //			findInstructor(appDAO);
 //			deleteInstructor(appDAO);
-			findInstructorDetail(appDAO);
-
+//			findInstructorDetail(appDAO);
+			createInstructorWithCourses(appDAO);
 		};
 
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		// create the instructor
+		Instructor tempInstructor =
+				new Instructor("Chad", "Darby", "darby@luv2code.com");
+
+		// create the instructor detail
+		InstructorDetail tempInstructorDetail =
+				new InstructorDetail(
+						"http://www.luv2code.com/youtube",
+						"Luv 2 code!!!");
+		// associate objects
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+		// create courses
+		Courses tempCourse1 = new Courses("Air Guitar");
+		Courses tempCourse2 = new Courses("Electric Guitar");
+		Courses tempCourse3 = new Courses("Pin ball - Masterclass");
+		// add courses
+		tempInstructor.add(tempCourse1);
+		tempInstructor.add(tempCourse2);
+		tempInstructor.add(tempCourse3);
+
+		System.out.println("Saving instructor: " + tempInstructor);
+		appDAO.save(tempInstructor);
+		System.out.println("Courses: " + tempInstructor.getCourses());
+		System.out.println("Done!");
 	}
 
 	private void findInstructorDetail(AppDAO appDAO) {
@@ -50,25 +78,25 @@ public class CruddemoApplication {
 
 	private void createInstructor(AppDAO appDAO) {
 		// create the instructor
-//		Instructor tempInstructor =
-//				new Instructor("Chad", "Darby", "darby@luv2code.com");
-//
-//		// create the instructor detail
-//		InstructorDetail tempInstructorDetail =
-//				new InstructorDetail(
-//						"http://www.luv2code.com/youtube",
-//						"Luv 2 code!!!");
-
-
-		// create the instructor
 		Instructor tempInstructor =
-				new Instructor("Madhu", "Patel", "madhu@luv2code.com");
+				new Instructor("Chad", "Darby", "darby@luv2code.com");
 
 		// create the instructor detail
 		InstructorDetail tempInstructorDetail =
 				new InstructorDetail(
 						"http://www.luv2code.com/youtube",
-						"Guitar");
+						"Luv 2 code!!!");
+
+
+		// create the instructor
+//		Instructor tempInstructor =
+//				new Instructor("Madhu", "Patel", "madhu@luv2code.com");
+//
+//		// create the instructor detail
+//		InstructorDetail tempInstructorDetail =
+//				new InstructorDetail(
+//						"http://www.luv2code.com/youtube",
+//						"Guitar");
 
 		// associate the objects
 		tempInstructor.setInstructorDetail(tempInstructorDetail);
