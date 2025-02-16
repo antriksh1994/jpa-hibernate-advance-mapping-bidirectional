@@ -43,7 +43,7 @@ public class InstructorDetail {
     public void setHobby(String hobby) {
         this.hobby = hobby;
     }
-    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
