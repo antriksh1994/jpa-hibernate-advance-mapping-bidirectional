@@ -15,6 +15,7 @@ public class Instructor {
     private String lastName;
     @Column(name="email")
     private String email;
+    // foriegn key
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
