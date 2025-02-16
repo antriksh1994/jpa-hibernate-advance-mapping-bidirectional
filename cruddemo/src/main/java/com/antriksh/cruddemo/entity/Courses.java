@@ -15,6 +15,8 @@ public class Courses {
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
+    public Courses() {
+    }
     // only title as id is auto generated
     public Courses(String title) {
         this.title = title;
