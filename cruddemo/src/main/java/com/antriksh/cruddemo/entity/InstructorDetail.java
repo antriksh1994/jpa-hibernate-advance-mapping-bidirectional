@@ -13,6 +13,8 @@ public class InstructorDetail {
     private String youtube_channel;
     @Column(name="hobby")
     private String hobby;
+    @OneToOne(mappedBy="instructorDetail", cascade=CascadeType.ALL)
+    private Instructor instructor;
     // first we create a no arg constructor
     public InstructorDetail() {
     }
@@ -39,6 +41,14 @@ public class InstructorDetail {
 
     public void setHobby(String hobby) {
         this.hobby = hobby;
+    }
+    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
     }
 
     public InstructorDetail(String youtube_channel, String hobby) {

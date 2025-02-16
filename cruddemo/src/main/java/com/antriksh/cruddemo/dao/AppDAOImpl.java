@@ -1,6 +1,7 @@
 package com.antriksh.cruddemo.dao;
 
 import com.antriksh.cruddemo.entity.Instructor;
+import com.antriksh.cruddemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class AppDAOImpl implements AppDAO {
     public Instructor findInstructorById(int theId) {
         return entityManager.find(Instructor.class, theId);
     }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(int theId) {
+        return entityManager.find(InstructorDetail.class, theId);
+    }
+
     @Override
     @Transactional
     public void deleteInstructorById(int theId) {

@@ -37,7 +37,7 @@ public class Instructor {
     public String getLastName() {
         return lastName;
     }
-
+    // ** set up mapping to instructor_detail entity
     public InstructorDetail getInstructorDetail() {
         return instructorDetail;
     }
