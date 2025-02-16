@@ -45,12 +45,11 @@ public class Courses {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
-
+    // we can also add the instructor in the return if needed
     @Override
     public String toString() {
         return "Courses{" +
                 "id=" + id +
-                "id=" + instructor +
                 ", title='" + title + '\'' +
                 '}';
     }
